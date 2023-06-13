@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const docMapping = new Map([
+const docMapping = [
   ["index", ""],
   ["Release-Notes", "releases"],
   ["Developers/project-layout", "contributing/project-layout"],
@@ -62,7 +62,6 @@ const docMapping = new Map([
   ["Developers/ActualQL/Examples", "api/actual-ql/examples"],
   ["Advanced/advanced-intro", "advanced/"],
   ["Advanced/Scripts/modify-transfers", "advanced/scripts/modify-transfers"],
-  ["Contact", "contact"],
   ["FAQ", "faq"],
   ["Troubleshooting/Server", "troubleshooting/server"],
   ["Troubleshooting/SharedArrayBuffer", "troubleshooting/shared-array-buffer"],
@@ -81,6 +80,11 @@ const docMapping = new Map([
   ],
   ["Accounts/connecting-your-bank", "experimental/bank-sync"],
 ]);
+
+const mapping = [
+  ...docMapping.map(([from, to]) => ["docs/" + from, "docs/" + to]),
+  ["docs/Contact", "contact"],
+];
 
 const template = (url) => /* HTML */ `
   <!DOCTYPE html>
@@ -105,9 +109,9 @@ fs.mkdirSync("./public/docs", { recursive: true });
 fs.cpSync("redirect.html", "./public/404.html");
 fs.cpSync("redirect.html", "./public/index.html");
 
-for (const [oldPath, newPath] of docMapping) {
-  const name = `./public/docs/${oldPath}`;
-  const content = template("https://actualbudget.org/docs/" + newPath);
+for (const [oldPath, newPath] of mapping) {
+  const name = `./public/${oldPath}`;
+  const content = template("https://actualbudget.org/" + newPath);
   fs.mkdirSync(name, { recursive: true });
   fs.writeFileSync(name + ".html", content);
   fs.writeFileSync(name + "/index.html", content);
