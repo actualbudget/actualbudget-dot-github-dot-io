@@ -107,7 +107,7 @@ fs.cpSync("redirect.html", "./public/index.html");
 
 for (const [oldPath, newPath] of docMapping) {
   const name = `./public/docs/${oldPath}`;
-  const content = template("https://docs.actualbudget.org/" + newPath);
+  const content = template("https://actualbudget.org/docs/" + newPath);
   fs.mkdirSync(name, { recursive: true });
   fs.writeFileSync(name + ".html", content);
   fs.writeFileSync(name + "/index.html", content);
