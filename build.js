@@ -20,7 +20,7 @@ const docMapping = [
   ["Installing/PikaPods", "install/pikapods"],
   ["Installing/Configuration", "config/"],
   ["Installing/HTTPS", "config/https"],
-  ["Getting-Started/using-actual/", "tour/"],
+  ["Getting-Started/using-actual", "tour/"],
   ["Getting-Started/using-actual/files", "tour/files"],
   ["Getting-Started/using-actual/overview", "tour/overview"],
   ["Getting-Started/using-actual/sidebar", "tour/sidebar"],
