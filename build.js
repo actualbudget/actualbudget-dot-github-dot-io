@@ -81,7 +81,7 @@ const docMapping = [
     "experimental/report-budget",
   ],
   ["Accounts/connecting-your-bank", "experimental/bank-sync"],
-]);
+];
 
 const mapping = [
   ...docMapping.map(([from, to]) => ["docs/" + from, "docs/" + to]),
